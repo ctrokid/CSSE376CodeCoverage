@@ -101,6 +101,26 @@ public class UserTest {
 	}
 	
 	@Test
+	public void TestDiscountFirstInputFalse(){
+		Discount target = new Discount(0, 1);
+		ServiceLocator._instance = null;
+		ServiceLocator.Instance().AddDiscount(target);
+		this.target.book(new Booking[] { new Flight(StartDate, EndDate, 1000),
+				new Hotel(5), new Car(3) });
+		assertEquals(1035,this.target.Price(), 0.01);
+	}
+	
+	@Test
+	public void TestDiscountSecondInputFalse(){
+		Discount target = new Discount(0.1, 2000);
+		ServiceLocator._instance = null;
+		ServiceLocator.Instance().AddDiscount(target);
+		this.target.book(new Booking[] { new Flight(StartDate, EndDate, 100),
+				new Hotel(5), new Car(3) });
+		assertEquals(1035,this.target.Price(), 0.01);
+	}
+	
+	@Test
 	public void TestBookDoubleMilesLessThan5000(){
 		this.target.bookWithDoubleMiles(new Booking[] 
 				{new Flight(StartDate, EndDate, 1000)});

@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ServiceLocator {
-	private static ServiceLocator _instance = null;
+	public static ServiceLocator _instance = null;
 	public static ServiceLocator Instance()
 	{
 		if(_instance == null)
@@ -42,6 +42,10 @@ public class ServiceLocator {
 	public void AddDiscount(Discount aDiscount)
 	{
 		discounts.add(aDiscount);	
+	}
+	
+	public void RemoveDiscount(int index){
+		discounts.remove(index);
 	}
 	
 	public void AddFlight(Flight aFlight)
