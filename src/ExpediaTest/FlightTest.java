@@ -9,6 +9,7 @@ import java.util.List;
 
 import Expedia.*;
 
+import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -74,23 +75,6 @@ public class FlightTest {
 		Assert.assertEquals(300, target.getBasePrice(), 0.0001);
 	}
 	
-	/*@Test
-	public void TestThatFlightDoesGetNumberOfPassengers()
-	{
-		var mockDatabase = mocks.StrictMock<IDatabase>();
-		
-		var values = new List<String>();
-		for(var i = 0; i < 50; i++)
-			values.Add("Bob");
-		
-		Expect.Call(mockDatabase.Passengers).Return(values);
-		mocks.ReplayAll();
-		
-		var target = new Flight(Date.Now, Date.Now.AddDays(1), 0);
-		
-		target.Database = mockDatabase;
-		Assert.AreEqual(50, target.NumberOfPassengers);
-	}*/
 	
 	@After
 	public void TearDown()

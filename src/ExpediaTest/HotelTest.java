@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.easymock.EasyMock;
+import org.easymock.internal.ReflectionUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -49,7 +50,24 @@ public class HotelTest
 		new Hotel(-5);
 	}
 
-	
+	/*@Test
+	public void TestThatHotelDoesGetAvailableRoomsFromDB() {
+		IDatabase mockDB = EasyMock.createMock(IDatabase.class);
+		int rooms1 = 35;
+		//int rooms2 = 7;
+		
+		EasyMock.expect(mockDB.Rooms.size()).andReturn(rooms1);
+		//EasyMock.expect(mockDB.Rooms.size()).andReturn(rooms2);
+		
+		EasyMock.replay(mockDB);
+		
+		Hotel target = new Hotel(5);
+		target.Database = mockDB;
+		
+		int size = target.AvailableRooms();
+		Assert.assertEquals(rooms1, size);
+	}
+	*/
 	@Test
     public void TestThatHotelDoesGetRoomOccupantFromTheDatabase()
     {
@@ -87,30 +105,10 @@ public class HotelTest
         //mocks.VerifyAll();
         EasyMock.verify(mockDB);
     }
-//    @Test
-//    public void TestThatHotelDoesGetRoomCountFromDatabase()
-//    {
-//    	IDatabase mockDB = EasyMock.createStrictMock(IDatabase.class);
-//        List<String> Rooms = new LinkedList<String>();
-//        for (int i = 0; i < 100; i++)
-//        {
-//            Rooms.add(i);
-//        }
-//
-//        // FIXME: what is the EasyMock equivalent, if any?
-//        //EasyMock.expect(mockDB.Rooms).PropertyBehavior();
-//
-//        EasyMock.replay(mockDB);
-//
-//        mockDB.Rooms = Rooms;
-//
-//
-//        var target = new Hotel(10);
-//        target.Database = mockDatabase;
-//
-//        int roomCount = target.AvailableRooms;
-//        Assert.AreEqual(Rooms.Count, roomCount);
-//
-//        mocks.VerifyAll();
-//    }
+	
+	@Test
+	public void TestThatGetMilesReturnsZero() {
+		Hotel target = new Hotel(5);
+		Assert.assertEquals(target.getMiles(), 0);
+	}
 }
